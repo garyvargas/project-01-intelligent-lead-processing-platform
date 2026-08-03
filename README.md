@@ -71,6 +71,246 @@ The workflow acts as an intelligent sales assistant capable of making automated 
 
 ---
 
+---
+
+# 🏗️ Workflow Architecture
+
+The Intelligent Lead Processing Platform is designed as an event-driven automation pipeline where incoming lead data is processed, analyzed using Artificial Intelligence, and routed through different business workflows depending on the generated priority.
+
+The architecture separates the workflow into different stages:
+
+1. Data Ingestion
+2. Data Validation and Normalization
+3. AI Analysis and Decision Making
+4. Business Logic Routing
+5. Automated Actions and Response
+
+---
+
+# 🔄 System Workflow
+
+```text
+                    Incoming Lead
+                         |
+                         ↓
+                  Webhook Endpoint
+                         |
+                         ↓
+              Validate Lead Information
+                         |
+                         ↓
+              Normalize Lead Data (JSON)
+                         |
+                         ↓
+                  OpenAI Analysis
+                         |
+                         ↓
+        ┌────────────────────────────────┐
+        │      AI Lead Evaluation        │
+        │                                │
+        │  - Lead Score                  │
+        │  - Priority Level              │
+        │  - Business Reasoning          │
+        │  - Recommended Action          │
+        └────────────────────────────────┘
+                         |
+                         ↓
+                 Priority Router
+                    (Switch)
+                         |
+        ┌────────────────┼────────────────┐
+        ↓                ↓                ↓
+
+      HIGH            MEDIUM             LOW
+
+        ↓                ↓                ↓
+
+Google Calendar   Save Lead         Save Lead
+Meeting           Information       Information
+
+        ↓                ↓                ↓
+
+Save Lead         Respond           Respond
+Information       Webhook            Webhook
+
+        ↓
+Respond
+Webhook
+```
+
+---
+
+# 🧩 Architecture Components
+
+## 1. API Layer
+
+Responsible for receiving external lead information.
+
+**Technologies:**
+
+- Webhooks
+- JSON Payloads
+- Postman
+
+The workflow exposes an API endpoint capable of receiving structured lead data from external systems.
+
+Example use cases:
+
+- Website contact forms
+- Marketing campaigns
+- CRM integrations
+- Sales inquiry forms
+
+---
+
+## 2. Data Processing Layer
+
+Responsible for preparing incoming information before AI analysis.
+
+Main responsibilities:
+
+- Validate required fields.
+- Normalize incoming data.
+- Create a consistent JSON structure.
+- Prepare information for AI processing.
+
+This layer ensures that the AI model receives clean and predictable data.
+
+---
+
+## 3. AI Decision Layer
+
+Responsible for analyzing the lead using OpenAI.
+
+The AI model evaluates:
+
+- Lead quality.
+- Business opportunity.
+- Potential urgency.
+- Recommended next action.
+
+The output is transformed into structured information that can be used by the automation workflow.
+
+Example:
+
+```json
+{
+  "leadScore": 85,
+  "priority": "High",
+  "reasoning": "The lead represents a strong business opportunity.",
+  "recommendedAction": "Schedule a meeting"
+}
+```
+
+---
+
+## 4. Business Logic Layer
+
+Responsible for deciding what action should happen after AI analysis.
+
+The workflow uses a Switch node to route leads based on their priority:
+
+### High Priority
+
+Actions:
+
+- Create Google Calendar meeting.
+- Store lead information.
+- Send webhook response.
+
+### Medium Priority
+
+Actions:
+
+- Store lead information.
+- Send webhook response.
+
+### Low Priority
+
+Actions:
+
+- Store lead information.
+- Send webhook response.
+
+---
+
+## 5. Data Storage Layer
+
+Google Sheets is used as the initial data storage solution for lead records.
+
+Stored information includes:
+
+- Lead information.
+- AI evaluation.
+- Priority level.
+- Processing results.
+
+This approach provides a lightweight database solution during the prototype phase while keeping the architecture ready for future migration to production databases.
+
+---
+
+# 🧠 Engineering Design Decisions
+
+## Structured JSON throughout the workflow
+
+The workflow was designed around structured JSON objects to maintain consistency between nodes and simplify data processing.
+
+This allows information to be reused across multiple steps without unnecessary transformations.
+
+---
+
+## Switch-based routing architecture
+
+A Switch node was selected instead of multiple conditional branches because it provides a cleaner and more scalable way to handle different lead priorities.
+
+Future priority levels can be added without redesigning the entire workflow.
+
+---
+
+## Separation between processing and actions
+
+The workflow separates:
+
+- Data preparation.
+- AI analysis.
+- Business actions.
+
+This improves maintainability and makes debugging easier because each stage has a specific responsibility.
+
+---
+
+## AI-assisted decision making
+
+OpenAI is used as a decision-support layer rather than simply generating text.
+
+The model evaluates business context and produces structured outputs that directly influence automation behavior.
+
+---
+
+# 📊 High-Level Data Flow
+
+```text
+Lead Input
+    ↓
+Webhook Request
+    ↓
+Validated Data
+    ↓
+Normalized JSON Object
+    ↓
+OpenAI Lead Analysis
+    ↓
+Priority Classification
+    ↓
+Business Automation
+    ↓
+Final Response
+```
+
+---
+
+---
+
 # 🧠 AI Automation Engineering Lab
 
 This repository is part of my **AI Automation Engineering Lab**, a practical learning environment focused on designing real-world automation systems using:
