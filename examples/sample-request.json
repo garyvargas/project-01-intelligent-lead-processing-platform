@@ -1,0 +1,15 @@
+{
+  "fullName": "Sarah Mitchell",
+  "email": "sarah.mitchell@innovaflow.io",
+  "phone": "+1-415-555-0187",
+  "company": "InnovaFlow",
+  "jobTitle": "Operations Director",
+  "country": "United States",
+  "industry": "Logistics",
+  "companySize": "51-200",
+  "serviceRequested": "AI Workflow Automation",
+  "estimatedBudgetUSD": 12000,
+  "projectDescription": "We want to automate lead qualification, customer onboarding, and internal approval workflows using AI, APIs, and n8n.",
+  "preferredContactMethod": "Email",
+  "source": "LinkedIn"
+}
