@@ -420,7 +420,7 @@
       "parameters": {
         "sendTo": "={{ $json.lead.email }}",
         "subject": "We've received your AI Automation inquiry",
-        "message": "=<p>Hi {{$json.lead.fullName}},</p>\n\n<p>Thank you for contacting us regarding your AI automation project.</p>\n\n<p>We've successfully received your request and our team will review it shortly.</p>\n\n<p>We'll reach out within the next business day to discuss your requirements and the next steps.</p>\n\n<p>Best regards,<br>\nMinino Labs</p>",
+        "message": "=<p>Hi {{$json.lead.fullName}},</p>\n\n<p>Thank you for contacting us regarding your AI automation project.</p>\n\n<p>We've successfully received your request and our team will review it shortly.</p>\n\n<p>We'll reach out within the next business day to discuss your requirements and the next steps.</p>\n\n<p>Best regards,<br>\Sales Team</p>",
         "options": {}
       },
       "type": "n8n-nodes-base.gmail",
