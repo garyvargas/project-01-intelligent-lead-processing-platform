@@ -87,6 +87,47 @@ The architecture separates the workflow into different stages:
 
 ---
 
+---
+
+# 📂 Project Structure
+
+```text
+project-01-intelligent-lead-processing-platform/
+
+├── README.md                     # Project documentation
+│
+├── workflow/
+│   └── .gitkeep                  # n8n workflow files
+│
+├── docs/
+│   └── .gitkeep                  # Technical documentation
+│
+├── assets/
+│   └── .gitkeep                  # Screenshots, diagrams and media
+│
+└── LICENSE                       # MIT License (to be added)
+```
+
+## Directory Overview
+
+### README.md
+
+Contains the complete project documentation, including architecture, setup instructions, lessons learned, troubleshooting, and future improvements.
+
+### workflow/
+
+Stores the exported n8n workflow files used by this project.
+
+### docs/
+
+Contains additional technical documentation that complements the main README.
+
+### assets/
+
+Stores project resources such as workflow screenshots, architecture diagrams, GIF demonstrations, and other visual assets.
+
+---
+
 # 🔄 System Workflow
 
 ```text
