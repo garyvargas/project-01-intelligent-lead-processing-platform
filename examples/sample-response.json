@@ -1,0 +1,12 @@
+{
+    "success": true,
+    "message": "Lead processed successfully.",
+    "lead": {
+        "fullName": "Sarah Mitchell",
+        "email": "sarah.mitchell@innovaflow.io"
+    },
+    "leadScore": 8,
+    "priority": "High",
+    "recommendedAction": "Contact via email promptly to discuss project details, confirm budget, timelines, and specific AI and API integration requirements, and qualify the decision-making process further.",
+    "action": "Schedule Discovery Call"
+}
